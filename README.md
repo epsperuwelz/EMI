@@ -36,15 +36,15 @@ Comme ils sont de toute façon dans mon seeding et que tout le monde y a accès 
 
 -Pour le panel Admin:
 
-email:admin1@emi.be
+email: admin1@emi.be
 
-password:password
+password: password
 
 -Pour le panel Home:
 
-email:philippe.richard@emi.be
+email: philippe.richard@emi.be
 
-password:password
+password: password
 
 6.ensuite:
 
@@ -64,10 +64,8 @@ Dans:vendor->filament->filament->resources->views->pages->auth->login.blade.php
 
 ligne 9:
 
- <pre><a class="text-xs" href="{{ url('/') }}" >
-    <i class="fas fa-arrow-alt-circle-down"></i> Return to landing page
- </a></pre>
-
+  ##   <a class="text-xs" href="{{ url('/') }}" ><i class="fas fa-arrow-alt-circle-down"></i> Return to landing page</a>
+     
 9.et enfin:
 
 php artisan icons:cache
