@@ -31,12 +31,19 @@ DB_DATABASE=emi
 php artisan migrate --seed
 
 afin de créer les tables dans la DB préalablement créée et de populer les tables users,roles et model_has_roles via le database seeding (users créés dans database->seeders->DatabaseSeeder.php). (je vous donnerai les usernames,les emails et les passwords)
+
 Comme ils sont de toute façon dans mon seeding et que tout le monde y a accès je vous en donne 2:
+
 -Pour le panel Admin:
+
 email:admin1@emi.be
+
 password:password
+
 -Pour le panel Home:
+
 email:philippe.richard@emi.be
+
 password:password
 
 6.ensuite:
@@ -57,11 +64,9 @@ Dans:vendor->filament->filament->resources->views->pages->auth->login.blade.php
 
 ligne 9:
 
- <pre>
- <a class="text-xs" href="{{ url('/') }}" >
+ <pre><a class="text-xs" href="{{ url('/') }}" >
     <i class="fas fa-arrow-alt-circle-down"></i> Return to landing page
- </a> 
- </pre>
+ </a></pre>
 
 9.et enfin:
 
