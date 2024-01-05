@@ -4,7 +4,7 @@ Coucou les petits loups,
 
 Je vous donne quelques instructions:
 
-1.créer la DB dans phpMyAdmin:(onglet Bses de données)
+1.créer la DB dans phpMyAdmin:(onglet Bases de données)
 
 nom: emi
 
