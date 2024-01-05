@@ -1,66 +1,72 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+EAFC Material Inventory
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Coucou les petits loups,
 
-## About Laravel
+Je vous donne quelques instructions:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1.créer la DB dans phpMyAdmin:(onglet Bses de données)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+nom: emi
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+codage de caractères: utf8mb4_general_ci /!\
 
-## Learning Laravel
+2.récuper l'url du projet (https://github.com/epsperuwelz/EMI.git) (btn vert "Code") sur github : https://github.com/epsperuwelz/EMI
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+3.sur VS Code:cloner et ouvrir le projet puis taper la commande suivante dans le terminal:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+composer update
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+afin de récupérer le vendor.
 
-## Laravel Sponsors
+4.faire un copié du fichier .env.example et le coller à la racine puis le renommer: .env
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+modifier:
 
-### Premium Partners
+APP_NAME=EMI
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+DB_DATABASE=emi
 
-## Contributing
+5.puis taper la commande:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+php artisan migrate --seed
 
-## Code of Conduct
+afin de créer les tables dans la DB préalablement créée et de populer les tables users,roles et model_has_roles via le database seeding (users créés dans database->seeders->DatabaseSeeder.php). (je vous donnerai les usernames,les emails et les passwords)
+Comme ils sont de toute façon dans mon seeding et que tout le monde y a accès je vous en donne 2:
+-Pour le panel Admin:
+email:admin1@emi.be
+password:password
+-Pour le panel Home:
+email:philippe.richard@emi.be
+password:password
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+6.ensuite:
 
-## Security Vulnerabilities
+php artisan serv
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+pour lancer le serveur.
 
-## License
+7.une erreur apparaîtra il faut juste cliquer sur le btn "GENERATE APP KEY" et rafraîchir la page.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+(c'est la clef cryptée qui se trouve dans le fichier .env (APP_KEY=base64:5CYfpos6fEvE7dVzG9KHN2HPSAQ/u5WTt0N1Xooo+2xLiM=) 
+
+mais comme on a pris l'exemple du .env cette clef n'est pas présente...
+
+8.POUR PROVISOIREMENT FAIRE UN REDIRECT VERS LA LANDING PAGE DEPUIS LA LOGIN PAGE
+
+Dans:vendor->filament->filament->resources->views->pages->auth->login.blade.php
+
+ligne 9:
+
+ <a class="text-xs" href="{{ url('/') }}" >
+    <i class="fas fa-arrow-alt-circle-down"></i> Return to landing page
+ </a> 
+
+9.et enfin:
+
+php artisan icons:cache
+
+qui soi-disant permet à Filament d'être moins lent... :-(
+
+Vous êtes prêts à faire les migrations !! ;-)
+
+Voir aussi le fichier text emi-etapes.txt
