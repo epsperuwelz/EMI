@@ -66,7 +66,7 @@ ligne 9:
 
      "<a class="text-xs" href="{{ url('/') }}" >Return to landing page</a>" 
      
-9.et enfin:
+9.et enfin dans un autre terminal:
 
 php artisan icons:cache
 
