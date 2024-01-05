@@ -57,9 +57,11 @@ Dans:vendor->filament->filament->resources->views->pages->auth->login.blade.php
 
 ligne 9:
 
+ <code>
  <a class="text-xs" href="{{ url('/') }}" >
     <i class="fas fa-arrow-alt-circle-down"></i> Return to landing page
  </a> 
+ </code>
 
 9.et enfin:
 
