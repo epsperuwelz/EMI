@@ -74,4 +74,4 @@ qui soi-disant permet à Filament d'être moins lent... :-(
 
 Vous êtes prêts à faire les migrations !! ;-)
 
-Voir aussi le fichier text emi-etapes.txt
+Voir aussi le fichier texte emi-etapes.txt que je mets sur Teams.
