@@ -91,7 +91,7 @@ Voir aussi le fichier texte emi-etapes.txt que j'ai mis sur Teams dans Développ
 
 ETAPES-EMI-BASE&exemple-creation-ressource-avec-Filament3  dans lequel j'ai noté chaque 
 
-étape pour la création de ce projet de base.
+étape de la création de ce projet de base.
 
 De plus à partir du point 21(CREATION DES RESSOURCES POUR CHAQUE PANEL) il y a les étapes
 
