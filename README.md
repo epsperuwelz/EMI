@@ -26,7 +26,7 @@ codage de caractères: utf8mb4_general_ci /!\
 
 4.dans VS Code ouvrir un terminal (onglet ... -> Terminal -> New Terminal) puis taper la commande suivante:
 
-composer update
+composer install
 
 afin de récupérer le vendor.
 
