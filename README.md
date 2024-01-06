@@ -2,7 +2,7 @@ EAFC Material Inventory
 
 Coucou les petits loups,
 
-Je vous donne quelques instructions:
+Je vous donne les étapes à suivre pour installer le projet sur votre machine:
 
 1.créer la DB dans phpMyAdmin:(onglet Bases de données)
 
@@ -95,7 +95,7 @@ Vous êtes prêts à faire les migrations !! ;-)
 
 Voir aussi le fichier texte emi-etapes.txt que j'ai mis sur Teams dans Développement ->
 
-ETAPES-EMI-BASE&exemple-creation-ressource-avec-Filament3  dans lequel j'ai noté chaque 
+ETAPES-EMI-BASE&exemple-creation-ressource-avec-Filament3, dans lequel j'ai noté chaque 
 
 étape de la création de ce projet de base.
 
