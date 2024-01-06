@@ -74,4 +74,16 @@ qui soi-disant permet à Filament d'être moins lent... :-(
 
 Vous êtes prêts à faire les migrations !! ;-)
 
-Voir aussi le fichier texte emi-etapes.txt que je mets sur Teams.
+Voir aussi le fichier texte emi-etapes.txt que j'ai mis sur Teams dans Développement ->
+
+ETAPES-EMI-BASE&exemple-creation-ressource-avec-Filament3  dans lequel j'ai noté chaque 
+
+étape pour la création de ce projet de base.
+
+De plus à partir du point 21(CREATION DES RESSOURCES POUR CHAQUE PANEL) il y a les étapes
+
+à suivre pour les migrations que vous aurez à faire (exemple avec la ressource Brand).
+
+Happy Coding les petits loups ! ;-)
+
+
