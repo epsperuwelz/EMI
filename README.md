@@ -18,7 +18,10 @@ codage de caractères: utf8mb4_general_ci /!\
 
      b.dans le PowerShell taper les commandes suivantes:
 
-     PS C:\wamp64\www> git clone https://github.com/epsperuwelz/EMI.git
+     PS C:\wamp64\www> 
+     ```
+     git clone https://github.com/epsperuwelz/EMI.git
+     ```
 
      PS C:\wamp64\www> cd EMI
 
