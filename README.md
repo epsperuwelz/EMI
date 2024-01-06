@@ -10,9 +10,21 @@ nom: emi
 
 codage de caractères: utf8mb4_general_ci /!\
 
-2.récuper l'url du projet (https://github.com/epsperuwelz/EMI.git) (btn vert "Code") sur github : https://github.com/epsperuwelz/EMI
+2.copier l'url du projet (le btn vert "Code" tout en haut -> onglet HTTPS) : https://github.com/epsperuwelz/EMI.git
 
-3.sur VS Code:cloner et ouvrir le projet puis taper la commande suivante dans le terminal:
+3.cloner le projet:
+
+     a.se mettre dans le dossier www, faire shift + clic droit -> ouvrir la fenêtre PowerShell ici
+
+     b.dans le PowerShell taper les commandes suivantes:
+
+     PS C:\wamp64\www> git clone https://github.com/epsperuwelz/EMI.git
+
+     PS C:\wamp64\www> cd EMI
+
+     PS C:\wamp64\www\EMI> code .
+
+4.dans VS Code ouvrir un terminal (onglet ... -> Terminal -> New Terminal) puis taper la commande suivante:
 
 composer update
 
@@ -32,7 +44,7 @@ php artisan migrate --seed
 
 afin de créer les tables dans la DB préalablement créée et de populer les tables users,roles et model_has_roles via le database seeding (users créés dans database->seeders->DatabaseSeeder.php). (je vous donnerai les usernames,les emails et les passwords)
 
-Comme ils sont de toute façon dans mon seeding et que tout le monde y a accès je vous en donne 2:
+Comme ces users sont de toute façon dans mon seeding et que tout le monde y a accès, je vous en donne 2:
 
 -Pour le panel Admin:
 
@@ -66,7 +78,8 @@ ligne 9:
 
      "<a class="text-xs" href="{{ url('/') }}" >Return to landing page</a>" 
      
-9.et enfin dans un autre terminal:
+9.et enfin dans un autre terminal 
+(que l'on ajoute avec onglet ... -> Terminal -> New Terminal ou bien avec le petit + en haut à droite du terminal):
 
 php artisan icons:cache
 
@@ -85,5 +98,6 @@ De plus à partir du point 21(CREATION DES RESSOURCES POUR CHAQUE PANEL) il y a 
 à suivre pour les migrations que vous aurez à faire (exemple avec la ressource Brand).
 
 Happy Coding les petits loups ! ;-)
+
 
 
