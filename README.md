@@ -25,8 +25,9 @@ codage de caractères: utf8mb4_general_ci /!\
      PS C:\wamp64\www\EMI> code .
 
 4.dans VS Code ouvrir un terminal (onglet ... -> Terminal -> New Terminal) puis taper la commande suivante:
-
+```
 composer install
+```
 
 afin de récupérer le vendor.
 
