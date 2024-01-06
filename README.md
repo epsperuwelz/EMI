@@ -14,18 +14,18 @@ codage de caractères: utf8mb4_general_ci /!\
 
 3.cloner le projet:
 
-     a.se mettre dans le dossier www, faire shift + clic droit -> ouvrir la fenêtre PowerShell ici
+a.se mettre dans le dossier www, faire shift + clic droit -> ouvrir la fenêtre PowerShell ici
 
-     b.dans le PowerShell taper les commandes suivantes:
+b.dans le PowerShell taper les commandes suivantes:
 
-     PS C:\wamp64\www> 
-     ```
-     git clone https://github.com/epsperuwelz/EMI.git
-     ```
+PS C:\wamp64\www> 
+```
+git clone https://github.com/epsperuwelz/EMI.git
+```
 
-     PS C:\wamp64\www> cd EMI
+PS C:\wamp64\www> cd EMI
 
-     PS C:\wamp64\www\EMI> code .
+PS C:\wamp64\www\EMI> code .
 
 4.dans VS Code ouvrir un terminal (onglet ... -> Terminal -> New Terminal) puis taper la commande suivante:
 ```
