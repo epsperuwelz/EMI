@@ -30,7 +30,7 @@ composer update
 
 afin de récupérer le vendor.
 
-4.faire un copié du fichier .env.example et le coller à la racine puis le renommer: .env
+5.faire un copié du fichier .env.example et le coller à la racine puis le renommer: .env
 
 modifier:
 
@@ -38,7 +38,7 @@ APP_NAME=EMI
 
 DB_DATABASE=emi
 
-5.puis taper la commande:
+6.puis taper la commande:
 
 php artisan migrate --seed
 
@@ -58,19 +58,19 @@ email: philippe.richard@emi.be
 
 password: password
 
-6.ensuite:
+7.ensuite:
 
 php artisan serv
 
 pour lancer le serveur.
 
-7.une erreur apparaîtra il faut juste cliquer sur le btn "GENERATE APP KEY" et rafraîchir la page.
+8.une erreur apparaîtra il faut juste cliquer sur le btn "GENERATE APP KEY" et rafraîchir la page.
 
 (c'est la clef cryptée qui se trouve dans le fichier .env (APP_KEY=base64:5CYfpos6fEvE7dVzG9KHN2HPSAQ/u5WTt0N1Xooo+2xLiM=) 
 
 mais comme on a pris l'exemple du .env cette clef n'est pas présente...
 
-8.POUR PROVISOIREMENT FAIRE UN REDIRECT VERS LA LANDING PAGE DEPUIS LA LOGIN PAGE
+9.POUR PROVISOIREMENT FAIRE UN REDIRECT VERS LA LANDING PAGE DEPUIS LA LOGIN PAGE
 
 Dans:vendor->filament->filament->resources->views->pages->auth->login.blade.php
 
@@ -78,7 +78,7 @@ ligne 9:
 
      "<a class="text-xs" href="{{ url('/') }}" >Return to landing page</a>" 
      
-9.et enfin dans un autre terminal 
+10.et enfin dans un autre terminal 
 (que l'on ajoute avec onglet ... -> Terminal -> New Terminal ou bien avec le petit + en haut à droite du terminal):
 
 php artisan icons:cache
