@@ -14,7 +14,7 @@ codage de caractères: utf8mb4_general_ci /!\
 
 a.se mettre dans le dossier www, faire shift + clic droit -> ouvrir la fenêtre PowerShell ici
 
-b.dans le PowerShell taper les commandes suivantes:
+b.dans le PowerShell copier-coller les commandes suivantes:
 
 PS C:\wamp64\www> 
 ```
@@ -30,7 +30,11 @@ PS C:\wamp64\www\EMI>
 ```
 code .
 ```
-3.dans VS Code ouvrir un terminal (onglet ... -> Terminal -> New Terminal) puis taper la commande suivante:
+3.dans VS Code ouvrir un terminal (onglet ... -> Terminal -> New Terminal) puis copier-coller la commande suivante:
+```
+composer update
+```
+OU
 ```
 composer install
 ```
@@ -44,7 +48,7 @@ APP_NAME=EMI
 
 DB_DATABASE=emi
 
-5.puis taper la commande:
+5.puis copier-coller la commande:
 ```
 php artisan migrate --seed
 ```
@@ -64,19 +68,7 @@ email: philippe.richard@emi.be
 
 password: password
 
-6.ensuite:
-```
-php artisan serv
-```
-pour lancer le serveur.
-
-7.une erreur apparaîtra il faut juste cliquer sur le btn "GENERATE APP KEY" et rafraîchir la page.
-
-(c'est la clef cryptée qui se trouve dans le fichier .env (APP_KEY=base64:5CYfpos6fEvE7dVzG9KHN2HPSAQ/u5WTt0N1Xooo+2xLiM=) 
-
-mais comme on a pris l'exemple du .env cette clef n'est pas présente...
-
-8.POUR PROVISOIREMENT FAIRE UN REDIRECT VERS LA LANDING PAGE DEPUIS LA LOGIN PAGE
+6.POUR PROVISOIREMENT FAIRE UN REDIRECT VERS LA LANDING PAGE DEPUIS LA LOGIN PAGE
 
 Dans:vendor->filament->filament->resources->views->pages->auth->login.blade.php
 
@@ -84,6 +76,18 @@ ligne 9:
 ```
 <a class="text-xs" href="{{ url('/') }}" >Return to landing page</a>
 ```   
+7.ensuite:
+```
+php artisan serv
+```
+pour lancer le serveur.
+
+8.une erreur apparaîtra il faut juste cliquer sur le btn "GENERATE APP KEY" et rafraîchir la page.
+
+(c'est la clef cryptée qui se trouve dans le fichier .env (APP_KEY=base64:5CYfpos6fEvE7dVzG9KHN2HPSAQ/u5WTt0N1Xooo+2xLiM=) 
+
+mais comme on a pris l'exemple du .env cette clef n'est pas présente...
+
 9.et enfin dans un autre terminal 
 (que l'on ajoute avec onglet ... -> Terminal -> New Terminal ou bien avec le petit + en haut à droite du terminal):
 ```
