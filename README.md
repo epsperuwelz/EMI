@@ -56,13 +56,13 @@ afin de créer les tables dans la DB préalablement créée et de populer les ta
 
 Comme ces users sont de toute façon dans mon seeding, que tout le monde y a accès,et que le projet ne sera pas mis en prod, je vous en donne 2,password compris :
 
--Pour le panel Admin:
+-Pour le panel Admin (Btn "Admin" de la navbar):
 
 email: admin1@emi.be
 
 password: password
 
--Pour le panel Home:
+-Pour le panel Home (Btn "Log in" de la navbar):
 
 email: philippe.richard@emi.be
 
