@@ -17,12 +17,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            VersionsSeeder::class,
+            OsSeeder::class,
+            StatesSeeder::class,
+            StatutsSeeder::class,
+            FonctionsSeeder::class,
+            CategoriesSeeder::class
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        //puis faire:php artisan db:seed (si la db n'a été populée par aucun seeding)
+        //ou:
+        //php artisan db:seed --class=VersionsSeeder
+        //et
+        //php artisan db:seed --class=OsSeeder
+        //etc.
 
         //Les users qui ont accès au Filament back office(Admin Panel):
         //-L'Admin

@@ -49,6 +49,17 @@ class User extends Authenticatable implements FilamentUser
         'password' => 'hashed',
     ];
 
+    protected $with = ['participants','materials'];
+
+    //Pour la relation one to many entre users et participants 
+    public function participants(){
+        return $this->hasMany(Participant::class);
+    }
+    //Pour la relation one to many entre users et materials
+    public function materials(){
+        return $this->hasMany(Material::class);
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         if(($panel->getId() === 'admin' && $this->hasRole('Admin')) || ($panel->getId() === 'admin' && $this->hasRole('Gestionnaire')))
