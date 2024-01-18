@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\StateResource\Pages;
-use App\Filament\Resources\StateResource\RelationManagers;
-use App\Models\State;
+use App\Filament\Resources\OperatingsystemResource\Pages;
+use App\Filament\Resources\OperatingsystemResource\RelationManagers;
+use App\Models\Operatingsystem;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -30,13 +30,13 @@ use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\CreateAction;
 
-
-
-class StateResource extends Resource
+class OperatingsystemResource extends Resource
 {
-    protected static ?string $model = State::class;
+    protected static ?string $model = Operatingsystem::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationLabel  = 'Operating Systems'; 
 
     public static function form(Form $form): Form
     {
@@ -44,8 +44,8 @@ class StateResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->required()
-                    ->maxLength(70),
-                TextArea::make('description')
+                    ->maxLength(30),
+                TextInput::make('description')
                     ->maxLength(144),
                 Toggle::make('enabled')
                     ->required(),
@@ -56,12 +56,8 @@ class StateResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->searchable()
-                    ->sortable(),
                 TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
+                    ->searchable(),
                 TextColumn::make('description')
                     ->searchable(),
                 IconColumn::make('enabled')
@@ -81,32 +77,29 @@ class StateResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
+                DeleteAction::make()
             ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ])
-            ->emptyStateActions([
-                CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStates::route('/'),
-            'create' => Pages\CreateState::route('/create'),
-            'view' => Pages\ViewState::route('/{record}'),
-            'edit' => Pages\EditState::route('/{record}/edit'),
+            'index' => Pages\ListOperatingsystems::route('/'),
+            'create' => Pages\CreateOperatingsystem::route('/create'),
+            'view' => Pages\ViewOperatingsystem::route('/{record}'),
+            'edit' => Pages\EditOperatingsystem::route('/{record}/edit'),
         ];
-    }    
+    }
 }

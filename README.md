@@ -30,7 +30,7 @@ PS C:\wamp64\www\EMI>
 ```
 code .
 ```
-3.dans VS Code ouvrir un terminal (onglet ... -> Terminal -> New Terminal) puis copier-coller la commande suivante:
+3.dans VS Code ouvrir un terminal (onglet dot menu(...) -> Terminal -> New Terminal) puis copier-coller la commande suivante:
 ```
 composer update
 ```

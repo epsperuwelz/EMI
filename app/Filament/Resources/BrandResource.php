@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\StateResource\Pages;
-use App\Filament\Resources\StateResource\RelationManagers;
-use App\Models\State;
+use App\Filament\Resources\BrandResource\Pages;
+use App\Filament\Resources\BrandResource\RelationManagers;
+use App\Models\Brand;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -32,23 +32,26 @@ use Filament\Tables\Actions\CreateAction;
 
 
 
-class StateResource extends Resource
+class BrandResource extends Resource
 {
-    protected static ?string $model = State::class;
+    protected static ?string $model = Brand::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationLabel  = 'Brands'; 
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->required()
-                    ->maxLength(70),
-                TextArea::make('description')
-                    ->maxLength(144),
-                Toggle::make('enabled')
-                    ->required(),
+                ->required()
+                ->maxLength(30),
+                TextInput::make('description')
+                ->maxLength(144),
+                TextInput::make('url')
+                ->maxLength(100),
+                Checkbox::make('enabled')
             ]);
     }
 
@@ -62,8 +65,8 @@ class StateResource extends Resource
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('description')
-                    ->searchable(),
+                TextColumn::make('description'),
+                TextColumn::make('url'),
                 IconColumn::make('enabled')
                     ->boolean(),
                 TextColumn::make('created_at')
@@ -73,7 +76,7 @@ class StateResource extends Resource
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true)
             ])
             ->filters([
                 //
@@ -81,11 +84,11 @@ class StateResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
+                DeleteAction::make()    
             ])
             ->bulkActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                DeleteBulkAction::make(),
                 ]),
             ])
             ->emptyStateActions([
@@ -103,10 +106,10 @@ class StateResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStates::route('/'),
-            'create' => Pages\CreateState::route('/create'),
-            'view' => Pages\ViewState::route('/{record}'),
-            'edit' => Pages\EditState::route('/{record}/edit'),
+            'index' => Pages\ListBrands::route('/'),
+            'create' => Pages\CreateBrand::route('/create'),
+            'view' => Pages\ViewBrand::route('/{record}'),
+            'edit' => Pages\EditBrand::route('/{record}/edit'),
         ];
     }    
 }

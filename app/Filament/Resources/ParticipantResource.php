@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\StateResource\Pages;
-use App\Filament\Resources\StateResource\RelationManagers;
-use App\Models\State;
+use App\Filament\Resources\ParticipantResource\Pages;
+use App\Filament\Resources\ParticipantResource\RelationManagers;
+use App\Models\Participant;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -30,11 +30,9 @@ use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\CreateAction;
 
-
-
-class StateResource extends Resource
+class ParticipantResource extends Resource
 {
-    protected static ?string $model = State::class;
+    protected static ?string $model = Participant::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -42,13 +40,18 @@ class StateResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
+                TextInput::make('external_id')
                     ->required()
-                    ->maxLength(70),
-                TextArea::make('description')
-                    ->maxLength(144),
-                Toggle::make('enabled')
-                    ->required(),
+                    ->numeric(),
+                TextInput::make('user_id')
+                    ->required()
+                    ->numeric(),
+                TextInput::make('fonction_id')
+                    ->required()
+                    ->numeric(),
+                TextInput::make('ticket_id')
+                    ->required()
+                    ->numeric(),
             ]);
     }
 
@@ -56,16 +59,18 @@ class StateResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->searchable()
+                TextColumn::make('external_id')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('name')
-                    ->searchable()
+                TextColumn::make('user_id')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('description')
-                    ->searchable(),
-                IconColumn::make('enabled')
-                    ->boolean(),
+                TextColumn::make('fonction_id')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('ticket_id')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -81,32 +86,29 @@ class StateResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
+                DeleteAction::make()
             ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ])
-            ->emptyStateActions([
-                CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStates::route('/'),
-            'create' => Pages\CreateState::route('/create'),
-            'view' => Pages\ViewState::route('/{record}'),
-            'edit' => Pages\EditState::route('/{record}/edit'),
+            'index' => Pages\ListParticipants::route('/'),
+            'create' => Pages\CreateParticipant::route('/create'),
+            'view' => Pages\ViewParticipant::route('/{record}'),
+            'edit' => Pages\EditParticipant::route('/{record}/edit'),
         ];
-    }    
+    }
 }

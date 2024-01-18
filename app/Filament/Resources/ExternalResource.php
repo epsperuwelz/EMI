@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\StateResource\Pages;
-use App\Filament\Resources\StateResource\RelationManagers;
-use App\Models\State;
+use App\Filament\Resources\ExternalResource\Pages;
+use App\Filament\Resources\ExternalResource\RelationManagers;
+use App\Models\External;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -32,9 +32,9 @@ use Filament\Tables\Actions\CreateAction;
 
 
 
-class StateResource extends Resource
+class ExternalResource extends Resource
 {
-    protected static ?string $model = State::class;
+    protected static ?string $model = External::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -44,9 +44,13 @@ class StateResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->required()
-                    ->maxLength(70),
-                TextArea::make('description')
-                    ->maxLength(144),
+                    ->maxLength(50),
+                TextInput::make('phone')
+                    ->tel()
+                    ->maxLength(50),
+                TextInput::make('email')
+                    ->email()
+                    ->maxLength(50),
                 Toggle::make('enabled')
                     ->required(),
             ]);
@@ -56,13 +60,11 @@ class StateResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->searchable()
-                    ->sortable(),
                 TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('description')
+                    ->searchable(),
+                TextColumn::make('phone')
+                    ->searchable(),
+                TextColumn::make('email')
                     ->searchable(),
                 IconColumn::make('enabled')
                     ->boolean(),
@@ -81,32 +83,29 @@ class StateResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
+                DeleteAction::make()
             ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ])
-            ->emptyStateActions([
-                CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStates::route('/'),
-            'create' => Pages\CreateState::route('/create'),
-            'view' => Pages\ViewState::route('/{record}'),
-            'edit' => Pages\EditState::route('/{record}/edit'),
+            'index' => Pages\ListExternals::route('/'),
+            'create' => Pages\CreateExternal::route('/create'),
+            'view' => Pages\ViewExternal::route('/{record}'),
+            'edit' => Pages\EditExternal::route('/{record}/edit'),
         ];
-    }    
+    }
 }

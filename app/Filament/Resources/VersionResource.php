@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\StateResource\Pages;
-use App\Filament\Resources\StateResource\RelationManagers;
-use App\Models\State;
+use App\Filament\Resources\VersionResource\Pages;
+use App\Filament\Resources\VersionResource\RelationManagers;
+use App\Models\Version;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -30,11 +30,9 @@ use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\CreateAction;
 
-
-
-class StateResource extends Resource
+class VersionResource extends Resource
 {
-    protected static ?string $model = State::class;
+    protected static ?string $model = Version::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -44,9 +42,15 @@ class StateResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->required()
-                    ->maxLength(70),
-                TextArea::make('description')
+                    ->maxLength(30),
+                TextInput::make('description')
                     ->maxLength(144),
+                TextInput::make('url')
+                    ->maxLength(30),
+                    //Pour la date ça doit être DatePicker et le format c'est ANNEE-MOIS-JOUR
+                    DatePicker::make('release')
+                    ->format('Y-m-d')
+                    ->required(),
                 Toggle::make('enabled')
                     ->required(),
             ]);
@@ -56,14 +60,15 @@ class StateResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->searchable()
-                    ->sortable(),
                 TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
+                    ->searchable(),
                 TextColumn::make('description')
                     ->searchable(),
+                TextColumn::make('url')
+                    ->searchable(),
+                TextColumn::make('release')
+                    ->date()
+                    ->sortable(),
                 IconColumn::make('enabled')
                     ->boolean(),
                 TextColumn::make('created_at')
@@ -81,32 +86,29 @@ class StateResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
+                DeleteAction::make()
             ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ])
-            ->emptyStateActions([
-                CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStates::route('/'),
-            'create' => Pages\CreateState::route('/create'),
-            'view' => Pages\ViewState::route('/{record}'),
-            'edit' => Pages\EditState::route('/{record}/edit'),
+            'index' => Pages\ListVersions::route('/'),
+            'create' => Pages\CreateVersion::route('/create'),
+            'view' => Pages\ViewVersion::route('/{record}'),
+            'edit' => Pages\EditVersion::route('/{record}/edit'),
         ];
-    }    
+    }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\StateResource\Pages;
-use App\Filament\Resources\StateResource\RelationManagers;
-use App\Models\State;
+use App\Filament\Resources\TicketResource\Pages;
+use App\Filament\Resources\TicketResource\RelationManagers;
+use App\Models\Ticket;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -30,11 +30,9 @@ use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\CreateAction;
 
-
-
-class StateResource extends Resource
+class TicketResource extends Resource
 {
-    protected static ?string $model = State::class;
+    protected static ?string $model = Ticket::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -42,13 +40,21 @@ class StateResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
+                TextInput::make('code')
                     ->required()
-                    ->maxLength(70),
-                TextArea::make('description')
+                    ->maxLength(60),
+                TextInput::make('cost')
+                    ->numeric()
+                    ->prefix('$'),
+                TextInput::make('description')
                     ->maxLength(144),
+                TextInput::make('urgency')
+                    ->numeric(),
                 Toggle::make('enabled')
                     ->required(),
+                TextInput::make('material_id')
+                    ->required()
+                    ->numeric(),
             ]);
     }
 
@@ -56,14 +62,16 @@ class StateResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('name')
-                    ->searchable()
+                TextColumn::make('code')
+                    ->searchable(),
+                TextColumn::make('cost')
+                    ->money()
                     ->sortable(),
                 TextColumn::make('description')
                     ->searchable(),
+                TextColumn::make('urgency')
+                    ->numeric()
+                    ->sortable(),
                 IconColumn::make('enabled')
                     ->boolean(),
                 TextColumn::make('created_at')
@@ -74,6 +82,9 @@ class StateResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('material_id')
+                    ->numeric()
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -81,32 +92,29 @@ class StateResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
+                DeleteAction::make()
             ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ])
-            ->emptyStateActions([
-                CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStates::route('/'),
-            'create' => Pages\CreateState::route('/create'),
-            'view' => Pages\ViewState::route('/{record}'),
-            'edit' => Pages\EditState::route('/{record}/edit'),
+            'index' => Pages\ListTickets::route('/'),
+            'create' => Pages\CreateTicket::route('/create'),
+            'view' => Pages\ViewTicket::route('/{record}'),
+            'edit' => Pages\EditTicket::route('/{record}/edit'),
         ];
-    }    
+    }
 }

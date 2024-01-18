@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\StateResource\Pages;
-use App\Filament\Resources\StateResource\RelationManagers;
-use App\Models\State;
+use App\Filament\Resources\SoftwareResource\Pages;
+use App\Filament\Resources\SoftwareResource\RelationManagers;
+use App\Models\Software;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -30,11 +30,9 @@ use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\CreateAction;
 
-
-
-class StateResource extends Resource
+class SoftwareResource extends Resource
 {
-    protected static ?string $model = State::class;
+    protected static ?string $model = Software::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -44,11 +42,21 @@ class StateResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->required()
-                    ->maxLength(70),
-                TextArea::make('description')
+                    ->maxLength(30),
+                TextInput::make('description')
                     ->maxLength(144),
+                TextInput::make('maker_url')
+                    ->maxLength(30),
+                TextInput::make('icon')
+                    ->maxLength(50),
                 Toggle::make('enabled')
                     ->required(),
+                TextInput::make('type_id')
+                    ->required()
+                    ->numeric(),
+                TextInput::make('version_id')
+                    ->required()
+                    ->numeric(),
             ]);
     }
 
@@ -56,13 +64,13 @@ class StateResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->searchable()
-                    ->sortable(),
                 TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
+                    ->searchable(),
                 TextColumn::make('description')
+                    ->searchable(),
+                TextColumn::make('maker_url')
+                    ->searchable(),
+                TextColumn::make('icon')
                     ->searchable(),
                 IconColumn::make('enabled')
                     ->boolean(),
@@ -74,6 +82,12 @@ class StateResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('type_id')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('version_id')
+                    ->numeric()
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -81,32 +95,29 @@ class StateResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
+                DeleteAction::make()
             ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ])
-            ->emptyStateActions([
-                CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStates::route('/'),
-            'create' => Pages\CreateState::route('/create'),
-            'view' => Pages\ViewState::route('/{record}'),
-            'edit' => Pages\EditState::route('/{record}/edit'),
+            'index' => Pages\ListSoftware::route('/'),
+            'create' => Pages\CreateSoftware::route('/create'),
+            'view' => Pages\ViewSoftware::route('/{record}'),
+            'edit' => Pages\EditSoftware::route('/{record}/edit'),
         ];
-    }    
+    }
 }

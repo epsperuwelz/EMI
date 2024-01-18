@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\StateResource\Pages;
-use App\Filament\Resources\StateResource\RelationManagers;
-use App\Models\State;
+use App\Filament\Resources\MessageResource\Pages;
+use App\Filament\Resources\MessageResource\RelationManagers;
+use App\Models\Message;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -30,11 +30,9 @@ use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\CreateAction;
 
-
-
-class StateResource extends Resource
+class MessageResource extends Resource
 {
-    protected static ?string $model = State::class;
+    protected static ?string $model = Message::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -42,13 +40,16 @@ class StateResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
+                TextInput::make('code')
                     ->required()
-                    ->maxLength(70),
-                TextArea::make('description')
+                    ->maxLength(60),
+                TextInput::make('description')
                     ->maxLength(144),
                 Toggle::make('enabled')
                     ->required(),
+                TextInput::make('ticket_id')
+                    ->required()
+                    ->numeric(),
             ]);
     }
 
@@ -56,12 +57,8 @@ class StateResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
+                TextColumn::make('code')
+                    ->searchable(),
                 TextColumn::make('description')
                     ->searchable(),
                 IconColumn::make('enabled')
@@ -74,6 +71,9 @@ class StateResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('ticket_id')
+                    ->numeric()
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -81,32 +81,29 @@ class StateResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
+                DeleteAction::make()
             ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ])
-            ->emptyStateActions([
-                CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStates::route('/'),
-            'create' => Pages\CreateState::route('/create'),
-            'view' => Pages\ViewState::route('/{record}'),
-            'edit' => Pages\EditState::route('/{record}/edit'),
+            'index' => Pages\ListMessages::route('/'),
+            'create' => Pages\CreateMessage::route('/create'),
+            'view' => Pages\ViewMessage::route('/{record}'),
+            'edit' => Pages\EditMessage::route('/{record}/edit'),
         ];
-    }    
+    }
 }
