@@ -49,12 +49,21 @@ class User extends Authenticatable implements FilamentUser
         'password' => 'hashed',
     ];
 
-    protected $with = ['participants','materials'];
+    protected $with = ['materials'];
 
     //Pour la relation one to many entre users et participants 
-    public function participants(){
-        return $this->hasMany(Participant::class);
+    // public function participants(){
+    //     return $this->hasMany(Participant::class);
+    // }
+
+      //RELATIONSHIP WITH PIVOT TABLE:
+    public function tickets()
+    {
+        return $this->belongsToMany(Ticket::class)
+            ->withTimestamps()
+            ->withPivot(['message']);
     }
+
     //Pour la relation one to many entre users et materials
     public function materials(){
         return $this->hasMany(Material::class);

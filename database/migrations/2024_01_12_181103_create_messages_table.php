@@ -21,6 +21,10 @@ return new class extends Migration
 
             $table->unsignedBigInteger('ticket_id');
             $table->foreign('ticket_id')->references('id')->on('tickets');
+
+            //AJOUT REL AVEC PARTICIPANTS ds migr d'update
+            //$table->unsignedBigInteger('participant_id');
+            //$table->foreign('participant_id')->references('id')->on('participants');
         });
     }
 

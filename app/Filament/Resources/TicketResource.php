@@ -48,8 +48,7 @@ class TicketResource extends Resource
                     ->prefix('$'),
                 TextInput::make('description')
                     ->maxLength(144),
-                TextInput::make('urgency')
-                    ->numeric(),
+                Toggle::make('urgency'),
                 Toggle::make('enabled')
                     ->required(),
                 TextInput::make('material_id')

@@ -37,4 +37,9 @@ class Category extends Model
         return $this->belongsTo(Category::class,'topcategory_id')->where('topcategory_id',NULL);
     }
 
+    //Pour la relation one to many entre categories et materials:
+    public function materials(){
+        return $this->hasMany(Material::class);
+    }
+
 }

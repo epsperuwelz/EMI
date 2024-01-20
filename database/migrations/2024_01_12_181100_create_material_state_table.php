@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('material_state', function (Blueprint $table) {
-            //ICI AJOUT PRIMARY
+        
             $table->unsignedBigInteger('material_id');
             $table->foreign('material_id')->references('id')->on('materials');
             $table->unsignedBigInteger('state_id');
