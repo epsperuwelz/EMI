@@ -32,15 +32,15 @@ class Material extends Model
         'updated_at',
     ];
 
-    protected $with = [
-        'categories',
-        'users',
-        'suppliers',
-        'locations',
-        'brands',
-        'tickets',
-        'material_state',
-    ];
+    // protected $with = [
+    //     'categories',
+    //     'users',
+    //     'suppliers',
+    //     'locations',
+    //     'brands',
+    //     'tickets',
+    //     'material_state',
+    // ];
 
     /* ACCESSOR */ 
     public function getResourceUrlAttribute()

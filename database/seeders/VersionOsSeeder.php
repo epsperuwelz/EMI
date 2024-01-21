@@ -16,8 +16,8 @@ class VersionOsSeeder extends Seeder
     {
         //REMPLIR LA PIVOT TABLE OU TABLE INTERMEDIAIRE
         $osVersion = Operatingsystem::find(1);
-        $osVersion->versions()->attach([3,4]);
+        $osVersion->versions()->syncWithoutDetaching([3,4]);
         $osVersionbis = Operatingsystem::find(4);
-        $osVersionbis->versions()->attach([1,3,4,5]);
+        $osVersionbis->versions()->syncWithoutDetaching([1,3,4,5]);
     }
 }

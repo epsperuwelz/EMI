@@ -22,15 +22,17 @@ class DatabaseSeeder extends Seeder
             OsSeeder::class,
             StatesSeeder::class,
             StatutsSeeder::class,
-            FonctionsSeeder::class,
-            CategoriesSeeder::class
+            CategoriesSeeder::class,
+            VersionOsSeeder::class,
+            MaterialSeeder::class
+            
         ]);
 
         //puis faire:php artisan db:seed (si la db n'a été populée par aucun seeding)
         //ou:
         //php artisan db:seed --class=VersionsSeeder
         //et
-        //php artisan db:seed --class=OsSeeder
+        //php artisan db:seed --class=VersionOsSeeder
         //etc.
 
         //Les users qui ont accès au Filament back office(Admin Panel):
