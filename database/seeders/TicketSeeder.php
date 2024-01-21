@@ -48,7 +48,7 @@ class TicketSeeder extends Seeder
         $user = User::find(8);
         $user->tickets()->syncWithoutDetaching([1 => ['message' => 'Une touche de ce clavier est manquante...']]);
 
-        //------------------NEW LINE IN material_state tbl--------------
+        //------------------UPDATE EXISTING LINE AND NEW LINE IN material_state tbl--------------
         $matState1 = Material::find(1);
         $matState1->states()->updateExistingPivot($matState1->id, ['updated_at' => now()]);
         $matState1->states()->syncWithoutDetaching([5]);
