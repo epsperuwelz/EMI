@@ -62,12 +62,9 @@ class LocationResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('description')
-                    ->searchable(),
-                TextColumn::make('plan')
-                    ->searchable(),
-                TextColumn::make('photo')
-                    ->searchable(),
+                // TextColumn::make('description'),
+                // TextColumn::make('plan'),
+                // TextColumn::make('photo'),
                 IconColumn::make('enabled')
                     ->boolean(),
                 TextColumn::make('created_at')

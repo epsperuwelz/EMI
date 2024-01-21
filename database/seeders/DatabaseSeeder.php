@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             StatutsSeeder::class,
             CategoriesSeeder::class,
             VersionOsSeeder::class,
-            MaterialSeeder::class
+            MaterialSeeder::class,
+            SoftwareSeeder::class
             
         ]);
 
@@ -70,10 +71,21 @@ class DatabaseSeeder extends Seeder
             'email' => 'alain.choquet@emi.be',
         ]);
 
+        //Prof qui n'est pas informaticien:
+        $user8 =  User::factory()->create([
+            'name' => 'Guy',
+            'email' => 'guy.demaupassant@emi.be',
+        ]);
+
         $role3 = Role::create(['name' => 'Professeur']);
         $user3->assignRole($role3);
         $user4->assignRole($role3);
+        $user8->assignRole($role3);
     
+        //(Si on a crée un user et qu'on veut lui assigner un rôle après coup:
+        //$guy = User::find(8);
+        //$guy->assignRole('Professeur');)
+
 
         //Les users qui ont le rôle d'Intervenant:
 

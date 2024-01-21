@@ -60,8 +60,7 @@ class OperatingsystemResource extends Resource
                 //     ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('description')
-                    ->searchable(),
+                // TextColumn::make('description'),
                 IconColumn::make('enabled')
                     ->boolean(),
                 TextColumn::make('created_at')

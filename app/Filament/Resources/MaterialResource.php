@@ -84,14 +84,14 @@ class MaterialResource extends Resource
                     ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('description')
-                    ->searchable(),
-                TextColumn::make('purchase_date')
-                    ->date()
-                    ->sortable(),
-                TextColumn::make('purchase_price')
-                    ->numeric()
-                    ->sortable(),
+                // TextColumn::make('description')
+                //     ->searchable(),
+                // TextColumn::make('purchase_date')
+                //     ->date()
+                //     ->sortable(),
+                // TextColumn::make('purchase_price')
+                //     ->numeric()
+                //     ->sortable(),
                 IconColumn::make('enabled')
                     ->boolean(),
                 ImageColumn::make('image_url'),
@@ -106,18 +106,18 @@ class MaterialResource extends Resource
                 TextColumn::make('category_id')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('supplier_id')
-                    ->numeric()
-                    ->sortable(),
+                // TextColumn::make('user_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('supplier_id')
+                //     ->numeric()
+                //     ->sortable(),
                 TextColumn::make('location_id')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('brand_id')
-                    ->numeric()
-                    ->sortable(),
+                // TextColumn::make('brand_id')
+                //     ->numeric()
+                //     ->sortable(),
             ])
             ->filters([
                 //

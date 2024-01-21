@@ -71,8 +71,7 @@ class CategoryResource extends Resource
                 TextColumn::make('topcategory.name')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('icon')
-                    ->searchable(),
+                // TextColumn::make('icon'),
                 IconColumn::make('enabled')
                     ->boolean(),
                 TextColumn::make('created_at')
