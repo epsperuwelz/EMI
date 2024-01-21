@@ -63,11 +63,11 @@ class TicketResource extends Resource
             ->columns([
                 TextColumn::make('code')
                     ->searchable(),
-                TextColumn::make('cost')
-                    ->money()
-                    ->sortable(),
-                TextColumn::make('description')
-                    ->searchable(),
+                // TextColumn::make('cost')
+                //     ->money()
+                //     ->sortable(),
+                // TextColumn::make('description')
+                //     ->searchable(),
                     IconColumn::make('urgency')
                     ->boolean(),
                 // IconColumn::make('enabled')

@@ -60,8 +60,8 @@ class StatutResource extends Resource
             TextColumn::make('name')
                 ->searchable()
                 ->sortable(),
-            TextColumn::make('description')
-                ->searchable(),
+            // TextColumn::make('description')
+            //     ->searchable(),
             IconColumn::make('enabled')
                 ->boolean(),
             TextColumn::make('created_at')

@@ -66,8 +66,8 @@ class SupplierResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('description')
-                    ->searchable(),
+                // TextColumn::make('description')
+                //     ->searchable(),
                 TextColumn::make('contact_name')
                     ->searchable(),
                 TextColumn::make('phone_number')

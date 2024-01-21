@@ -66,8 +66,8 @@ class SoftwareResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('description')
-                    ->searchable(),
+                // TextColumn::make('description')
+                //     ->searchable(),
                 TextColumn::make('maker_url')
                     ->searchable(),
                 TextColumn::make('icon')

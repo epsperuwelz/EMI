@@ -45,8 +45,8 @@ class OperatingsystemResource extends Resource
                 TextInput::make('name')
                     ->required()
                     ->maxLength(30),
-                TextInput::make('description')
-                    ->maxLength(144),
+                // TextInput::make('description')
+                //     ->maxLength(144),
                 Toggle::make('enabled')
                     ->required(),
             ]);

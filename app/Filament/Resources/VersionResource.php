@@ -64,8 +64,8 @@ class VersionResource extends Resource
                 //     ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('description')
-                    ->searchable(),
+                // TextColumn::make('description')
+                //     ->searchable(),
                 TextColumn::make('url')
                     ->searchable(),
                 TextColumn::make('release')
