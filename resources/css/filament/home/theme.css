@@ -1,0 +1,7 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@config './tailwind.config.js';
+/* @config 'resources/css/filament/home/tailwind.config.js'; */
+/* @config './home/tailwind.config.js'; */
+
+

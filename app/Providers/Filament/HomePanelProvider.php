@@ -39,10 +39,15 @@ class HomePanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Emerald,
             ])
+             //AJOUT ICI IL FALLAIT CHANGER LE PATH:
+            // ->viteTheme('resources/css/filament/home/theme.css')
+            ->viteTheme('../../../resources/css/filament/home/theme.css')
+
             ->discoverResources(in: app_path('Filament/Home/Resources'), for: 'App\\Filament\\Home\\Resources')
             ->discoverPages(in: app_path('Filament/Home/Pages'), for: 'App\\Filament\\Home\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+               //RENDRE INVISIBLE LE MENU DASHBOARD DE L'EXPLORATEUR:
+               // Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Home/Widgets'), for: 'App\\Filament\\Home\\Widgets')
             ->widgets([
