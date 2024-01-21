@@ -38,6 +38,7 @@ class MeterialSeeder extends Seeder
         foreach($brands as $brand){
             Brand::create($brand);
         }
+
         $suppliers = [
             [
                 'name'=>'Supplier1',  
@@ -193,6 +194,6 @@ class MeterialSeeder extends Seeder
         $matState9->states()->syncWithoutDetaching([1]);
         $matState10 = Material::find(10);
         $matState10->states()->syncWithoutDetaching([1]);
-        
+   
     }
 }

@@ -68,11 +68,10 @@ class TicketResource extends Resource
                     ->sortable(),
                 TextColumn::make('description')
                     ->searchable(),
-                TextColumn::make('urgency')
-                    ->numeric()
-                    ->sortable(),
-                IconColumn::make('enabled')
+                    IconColumn::make('urgency')
                     ->boolean(),
+                // IconColumn::make('enabled')
+                //     ->boolean(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
